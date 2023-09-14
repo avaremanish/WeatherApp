@@ -26,7 +26,7 @@ const TemperauteAndDetails = () => {
                 <div className="flex font-light text-sm items-center justify-center">
                           <UilTemperature size={18} className=" mr-1" />
                           Real fell:
-                         <span className="font "></span>
+                         <span className="font-medium ml-1"></span>
                 </div>
             </div>
         </div>

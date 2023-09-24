@@ -7,7 +7,7 @@ const BASE_URL = " https://api.openweathermap.org/data/2.5/"
 // https://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=1607394c84102ee7158d0ab45d78d0ad 
 
 const getWeatherData = (infoType, searchParams) => {
-    const url = new URL(BASE_URL + '/' + infoType)
+    const url = new URL(BASE_URL + "/" + infoType)
     url.search = new URLSearchParams({...searchParams, appid:API_KEY})
 
     return fetch(url)
@@ -34,7 +34,7 @@ const formatForecastWeather = (data) => {
     let { timezone, daily, hourly } = data;
 
     // Check if daily and hourly arrays have at least 6 elements
-    if (daily && daily.length >= 6) {
+    if (daily && daily.length <= 1) {
         daily = daily.slice(1, 6).map((d) => {
             return {
                 title: formatToLocalTime(d.dt, timezone, 'ccc'),
@@ -45,7 +45,7 @@ const formatForecastWeather = (data) => {
     }
 
     // Check if hourly array has at least 6 elements
-    if (hourly && hourly.length >= 6) {
+    if (hourly && hourly.length <= 1) {
         hourly = hourly.slice(1, 6).map((d) => {
             return {
                 title: formatToLocalTime(d.dt, timezone, 'hh:mm a'),
